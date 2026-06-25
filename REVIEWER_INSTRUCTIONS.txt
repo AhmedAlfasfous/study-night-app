@@ -1,0 +1,31 @@
+STUDY NIGHT - REVIEW COMMANDS
+
+1. Install dependencies:
+   npm install
+
+2. Build AND serve with the required default Gulp task:
+   npm run gulp
+
+   The app is served at http://localhost:1234.
+   Before starting the server, Gulp creates the optimized production build in dist/.
+
+3. In another terminal, run unit tests:
+   npm run gulp:test
+
+4. In another terminal while the server is running, run Cypress:
+   npm run gulp:cypress
+
+5. Optional complete static verification:
+   npm run verify
+
+Parcel evidence:
+- Source starter images are in images/ and are referenced by index.html.
+- dist/ contains hashed, optimized image assets.
+- dist/ contains minified and concatenated HTML, CSS, and JavaScript bundles.
+
+Cypress evidence:
+- beforeEach is used in both specs.
+- UI elements are selected through data-cy attributes.
+- forms.cy.js covers happy and unhappy form paths.
+- navigation.cy.js covers complete workflows involving creation, navigation,
+  persistence, reload, invalid input, and clearing saved data.

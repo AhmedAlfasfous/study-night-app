@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Study Night is a flashcard tool for creating card sets and reviewing study cards."
+    />
+    <title>Study Night</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <img
+          class="brandLogo"
+          src="./src/assets/study-night.svg"
+          alt="Study Night logo"
+          width="48"
+          height="48"
+        />
+        <span>Study Night</span>
+      </div>
+
+      <nav class="navMenu">
+        <button
+          class="navButton active"
+          type="button"
+          data-page="home"
+          data-cy="nav-home"
+        >
+          Home
+        </button>
+        <button
+          class="navButton"
+          type="button"
+          data-page="card-set"
+          data-cy="nav-card-set"
+        >
+          Card Set
+        </button>
+        <button
+          class="navButton"
+          type="button"
+          data-page="about"
+          data-cy="nav-about"
+        >
+          About
+        </button>
+      </nav>
+    </aside>
+
+    <main class="appShell">
+      <section class="page pageVisible" id="home-page" data-cy="home-page">
+        <div class="hero heroGrid">
+          <div class="heroContent">
+            <p class="eyebrow">Flashcards for focused review</p>
+            <h1 data-cy="home-heading">
+              Study smarter before the night is over.
+            </h1>
+            <p>
+              Create a card set, add study cards, shuffle them, and review your
+              material from one simple front-end app.
+            </p>
+            <button
+              class="primaryButton"
+              type="button"
+              data-page="card-set"
+              data-cy="start-studying"
+            >
+              Start Studying
+            </button>
+          </div>
+
+          <img
+            class="pageImage heroImage"
+            src="./images/homePage.png"
+            alt="Students using laptops and study materials around a shared table"
+            width="1000"
+            height="667"
+            loading="eager"
+            data-cy="home-image"
+          />
+        </div>
+
+        <div class="featureGrid">
+          <article class="featureCard">
+            <h2>Create sets</h2>
+            <p>Organize flashcards by topic, class, or exam.</p>
+          </article>
+          <article class="featureCard">
+            <h2>Add cards</h2>
+            <p>Write a question on the front and the answer on the back.</p>
+          </article>
+          <article class="featureCard">
+            <h2>Shuffle review</h2>
+            <p>Randomize cards so memorization does not depend on order.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="card-set-page" data-cy="card-set-page">
+        <div class="sectionHeader">
+          <p class="eyebrow">Card Sets</p>
+          <h1 data-cy="card-set-heading">Build your study deck</h1>
+          <p>Create a set, select it, then add cards to review.</p>
+        </div>
+
+        <div class="workspaceGrid">
+          <section class="panel">
+            <h2>Create Set</h2>
+            <form
+              id="create-set-form"
+              class="form"
+              novalidate
+              data-cy="create-set-form"
+            >
+              <label for="set-name">Set name</label>
+              <input
+                id="set-name"
+                type="text"
+                placeholder="Example: JavaScript Basics"
+                autocomplete="off"
+                data-cy="create-set-input"
+              />
+              <p
+                class="errorMessage"
+                id="create-set-error"
+                data-cy="create-set-error"
+              ></p>
+              <button
+                class="primaryButton"
+                type="submit"
+                data-cy="create-set-submit"
+              >
+                Create Set
+              </button>
+            </form>
+
+            <div class="setListHeader">
+              <h3>Your Sets</h3>
+              <button
+                class="smallButton"
+                type="button"
+                id="clear-data"
+                data-cy="clear-data"
+              >
+                Clear
+              </button>
+            </div>
+            <div class="setList" id="set-list" data-cy="set-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="selectedSetHeader">
+              <div>
+                <h2 id="selected-set-title" data-cy="selected-set-title">
+                  No set selected
+                </h2>
+                <p
+                  id="selected-set-count"
+                  class="mutedText"
+                  data-cy="selected-set-count"
+                >
+                  Create or select a set to begin.
+                </p>
+              </div>
+              <button
+                class="smallButton"
+                type="button"
+                id="shuffle-cards"
+                data-cy="shuffle-cards"
+                disabled
+              >
+                Shuffle
+              </button>
+            </div>
+
+            <form
+              id="add-card-form"
+              class="form"
+              novalidate
+              data-cy="add-card-form"
+            >
+              <label for="card-front">Card front</label>
+              <input
+                id="card-front"
+                type="text"
+                placeholder="Question or term"
+                autocomplete="off"
+                data-cy="add-card-front"
+              />
+
+              <label for="card-back">Card back</label>
+              <textarea
+                id="card-back"
+                placeholder="Answer or definition"
+                rows="4"
+                data-cy="add-card-back"
+              ></textarea>
+
+              <p
+                class="errorMessage"
+                id="add-card-error"
+                data-cy="add-card-error"
+              ></p>
+              <button
+                class="primaryButton"
+                type="submit"
+                data-cy="add-card-submit"
+              >
+                Add Card
+              </button>
+            </form>
+
+            <div class="cardsGrid" id="cards-list" data-cy="cards-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="about-page" data-cy="about-page">
+        <div class="aboutContainer aboutGrid">
+          <div>
+            <p class="eyebrow">About</p>
+            <h1 data-cy="about-heading">About Study Night</h1>
+            <p>
+              Study Night is a small front-end project built to practice
+              application setup, code quality, optimization, unit testing,
+              end-to-end testing, and task automation.
+            </p>
+            <p>
+              The project uses Parcel for production builds, Gulp for task
+              automation, Mocha and Chai for unit testing, and Cypress for
+              browser workflow testing.
+            </p>
+          </div>
+
+          <img
+            class="pageImage aboutImage"
+            src="./images/aboutImage.png"
+            alt="Student wearing headphones while studying on a laptop"
+            width="1000"
+            height="667"
+            loading="lazy"
+            data-cy="about-image"
+          />
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

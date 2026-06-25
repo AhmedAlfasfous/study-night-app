@@ -1,0 +1,40 @@
+{
+  "name": "study-night",
+  "version": "1.1.0",
+  "description": "A front-end flashcard study application optimized with Parcel and tested with Mocha and Cypress.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "start": "parcel index.html --dist-dir .parcel-dev --host 0.0.0.0 --port 1234",
+    "dev": "parcel index.html --dist-dir .parcel-dev --host 0.0.0.0 --port 1234",
+    "gulp": "gulp",
+    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean:dist && parcel build index.html --dist-dir dist --public-url ./",
+    "test": "mocha \"test/**/*.js\"",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "lint": "eslint src test cypress",
+    "format": "prettier --write .",
+    "verify": "npm run lint && npm run check:format && npm test && npm run build",
+    "gulp:build": "gulp build",
+    "gulp:test": "gulp test",
+    "gulp:cypress": "gulp cypress",
+    "check:format": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "chai": "^5.1.2",
+    "cypress": "^13.17.0",
+    "eslint": "^9.17.0",
+    "gulp": "^5.0.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-shell": "^0.8.0",
+    "mocha": "^11.0.1",
+    "parcel": "^2.13.3",
+    "prettier": "^3.4.2"
+  }
+}

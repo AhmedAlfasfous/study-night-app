@@ -1,0 +1,8 @@
+node_modules/
+.parcel-cache/
+.parcel-dev/
+coverage/
+cypress/videos/
+cypress/screenshots/
+.DS_Store
+npm-debug.log*
